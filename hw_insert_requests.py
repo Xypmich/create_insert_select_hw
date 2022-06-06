@@ -141,6 +141,8 @@ def tracks_collections(engine_connection, track_duration, collection_release, al
     for id_ in tracks_id:
         if collections_count > len(collections_id) - 1:
             collections_count = 0
+        elif id_[0] == 7 or id_[0] == 12 or id_[0] == 13:
+            continue
         engine_connection.execute(
             f"""INSERT INTO track_collection(track_id, collection_id)
             VALUES({id_[0]}, {collections_id[collections_count][0]})
